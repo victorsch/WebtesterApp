@@ -1,0 +1,50 @@
+#:kivy 1.10.1 
+#: import SlideTransition kivy.uix.screenmanager.SlideTransition
+
+ScreenManagement:
+	transition: SlideTransition()
+	BaseWindow:
+	DiagScreen:
+
+
+<BaseWindow>:
+	name: "base"
+	GridLayout:
+		cols:3
+		rows: 3
+		width: root.width
+		height: root.height
+		Button:
+			text: "Diagnostics"
+			on_release: app.root.current = "diag"
+		Button: 
+			on_release: app.root.current = "diag"
+			text: "Music"
+		Button:
+			text: "Video"
+		Button:
+			text: "Search"
+		Button:
+			text: "Debriefs"
+		Button:
+			text: "Contacts"
+
+
+<DiagScreen>:
+	name: "diag"
+	canvas:
+		Rectangle:
+			size: 50,50
+	GridLayout:
+		cols: 2
+		cols: 2
+		Label:
+			text: root.xstring
+		Button:
+			width: 50
+			on_release: app.root.current = "base"
+			text: "Yarr, this be it! Press to go back home!"
+		Button:
+			on_release: root.changestring()
+			text: "Hopefully this changes the label text."
+		
